@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compound Interest Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            margin: 0;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+            background: #333;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Compound Interest Calculator</h1>
+        <form id="compoundInterestForm">
+            <label for="initial_balance">Initial Investment:</label>
+            <input type="number" id="initial_balance" name="initial_balance" step="0.01" required>
+
+            <label for="periodic_deposit">Monthly Contribution:</label>
+            <input type="number" id="periodic_deposit" name="periodic_deposit" step="0.01" required>
+
+            <label for="rate">Estimated Annual Interest Rate:</label>
+            <input type="number" id="rate" name="rate" step="0.01" required>
+
+            <label for="years">Length of Time in Years:</label>
+            <input type="number" id="years" name="years" required>
+
+            <input type="submit" value="Calculate">
+        </form>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        document.getElementById('compoundInterestForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let initialBalance = parseFloat(document.getElementById('initial_balance').value);
+            let periodicDeposit = parseFloat(document.getElementById('periodic_deposit').value) * 12;
+            let years = parseInt(document.getElementById('years').value);
+            let rate = parseFloat(document.getElementById('rate').value) / 100;
+            let balance = 0;
+
+            for (let year = 1; year <= years; year++) {
+                if (year === 1) {
+                    balance += initialBalance + periodicDeposit;
+                    let benefice = balance * rate;
+                    balance += benefice;
+                    console.log(`Year ${year}: Benefit = ${benefice.toFixed(2)}, Total Balance = ${balance.toFixed(2)}`);
+                } else {
+                    balance += periodicDeposit;
+                    let benefice = balance * rate;
+                    balance += benefice;
+                    console.log(`Year ${year}: Benefit = ${benefice.toFixed(2)}, Total Balance = ${balance.toFixed(2)}`);
+                }
+            }
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerText = `Total amount after ${years} years: ${balance.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€`;
+        });
+    </script>
+</body>
+</html>
