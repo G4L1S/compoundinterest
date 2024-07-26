@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Compound Interest Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Compound Interest Calculator</h1>
+
         <form id="compoundInterestForm">
             <label for="initial_balance">Initial Investment:</label>
             <input type="number" id="initial_balance" name="initial_balance" step="0.01" required>
@@ -22,9 +25,44 @@
 
             <input type="submit" value="Calculate">
         </form>
+
         <div id="result" class="result" style="display: none;"></div>
+
+        <canvas id="pie_chart"></canvas>
+
+        <div id="chartData" class="chart-data" style="display: none;">
+            <p id="initialBalance"><span class="color-dot" id="dotInitialBalance"></span>Initial Investment: <span
+                    id="initialBalanceValue"></span></p>
+            <p id="totalDeposit"><span class="color-dot" id="dotTotalDeposit"></span>Total Contributions: <span
+                    id="totalDepositValue"></span></p>
+            <p id="totalInterest"><span class="color-dot" id="dotTotalInterest"></span>Total Interest: <span
+                    id="totalInterestValue"></span></p>
+        </div>
+
+        <canvas id="bar_chart"></canvas>
+
+        <table id="dataTable" class="data-table" style="display: none;">
+
+            <thead>
+                <tr>
+                    <th>Years</th>
+                    <th>Periodic Deposits</th>
+                    <th>Total Contributions</th>
+                    <th>Total Interests</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+
+            <tbody id="dataTableBody">
+            </tbody>
+
+        </table>
+
     </div>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
+
 </html>
