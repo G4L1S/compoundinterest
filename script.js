@@ -15,7 +15,6 @@ document.getElementById('compoundInterestForm').addEventListener('submit', funct
 
     let totalDeposits = [];
     let totalInterests = [];
-    let totalYears = [];
 
     const dataTableBody = document.getElementById('dataTableBody');
     dataTableBody.innerHTML = '';
@@ -41,7 +40,6 @@ document.getElementById('compoundInterestForm').addEventListener('submit', funct
 
         totalDeposits.push(total_DEPOSIT.toFixed(2));
         totalInterests.push(total_INTEREST.toFixed(2));
-        totalYears.push(year);
 
         const row = document.createElement('tr');
         row.innerHTML = `
