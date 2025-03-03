@@ -1,1 +1,1 @@
-# [Compound Interest Calculator](https://actriz.github.io/compoundinterest/)
+# [Compound Interest Calculator](https://g4l1s.github.io/compoundinterest/)
